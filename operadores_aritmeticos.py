@@ -35,5 +35,5 @@ print(f"El modulo de {a} y {b} es: {modulo}")
 
 #potencia o exponenciacion
 
-potencia = a**
-print(  )
+potencia = a**b
+print(f"La potencia de {a} elevado a {b} es: {potencia}")
