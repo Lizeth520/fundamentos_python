@@ -1,5 +1,7 @@
 # actividad2_diccionarios.py
 
+#CREACION DE GRUPO
+
 grupo = {
     1234567: {
         "nombre": "Ana Torres", 
@@ -26,42 +28,41 @@ grupo = {
         "ciudad": "Barranquilla"
         },
 }
+
+#FORMULA PARA CALCULAR EL PROMEDIO 
+
 def calcular_promedio(notas):
     return sum(notas) / len(notas)
 
-def mostrar_reporte(diccionario):
-    print(f"{'Ficha':<10}{'Nombre':<18}{'Edad':<6}{'Promedio':<10}{'Estado'}")
-    print("-" * 55)
-    for ficha, datos in diccionario.items():
-        promedio = calcular_promedio(datos["notas"])
-        estado = "APROBADO" if promedio >= 3.0 else "REPROBADO"
-        print(f"{ficha:<10}{datos['nombre']:<18}{datos['edad']:<6}{promedio:<10.2f}{estado}")
+# IMPRIMIR REPORTE 
 
-# Punto 3: reporte inicial
+for ficha, datos in grupo.items():
+    promedio = calcular_promedio(datos["notas"])
+    if promedio >= 3.0:
+        estado = "APROBADO"
+    else:
+        estado = "REPROBADO"
+    print(ficha, datos["nombre"], datos["edad"], round(promedio, 2), estado)
 
-mostrar_reporte(grupo)
+# AGREGAR UN NUEVO APRENDIZ
 
-# Punto 4: nuevo aprendiz y actualización de ciudad
-
-grupo [5678901] = {
-    "nombre": "Valentina Ruiz",
+grupo[5678901] = {
+    "nombre": "Valentina",
     "edad": 21,
     "notas": [3.9, 4.1, 3.6, 4.3],
-    "ciudad": "Bucaramanga",
-}
+    "ciudad": "Bucaramanga"
+    }
 
 grupo[2345678]["ciudad"] = "Nueva Ciudad"
 
 print("\nDespués de los cambios:")
-mostrar_reporte(grupo)
 
-# Punto 5 (bonus): ordenado de mayor a menor promedio
+for ficha, datos in grupo.items():
+    promedio = calcular_promedio(datos["notas"])
+    print(ficha, datos["nombre"], datos["ciudad"], round(promedio, 2))
 
-print("\nRanking de aprendices (mejor a peor promedio):")
-ranking = sorted(
-    grupo.items(),
-    key=lambda item: calcular_promedio(item[1]["notas"]),
-    reverse=True,
-)
-for ficha, datos in ranking:
-    print(f"{datos['nombre']:<18} {calcular_promedio(datos['notas']):.2f}")
+# MAYOR PROMEDIO
+
+print("\nRanking:")
+for ficha, datos in sorted(grupo.items(), key=clave x: calcular_promedio(x[1]["notas"]), reverse=True):
+    print(datos["nombre"], round(calcular_promedio(datos["notas"]), 2))
